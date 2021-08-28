@@ -1,4 +1,4 @@
-package com.example.demo.school;
+package com.example.demo.school.student;
 
 import javax.persistence.*;
 import java.time.LocalDate;
