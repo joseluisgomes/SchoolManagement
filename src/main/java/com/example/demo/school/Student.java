@@ -67,6 +67,24 @@ public class Student {
     }
 
     @Override
+    public boolean equals(Object o) {
+        if (this == o)
+            return true;
+        if (!(o instanceof Student student))
+            return false;
+        return id == student.id && email.equals(student.email);
+    }
+
+    @Override
+    public int hashCode() {
+        /*
+            31 equals to a shift and subtraction for better performance
+            on some architectures: 31 * i = (i << 5) - i
+         */
+        return 31 * Long.hashCode(id) + email.hashCode();
+    }
+
+    @Override
     public String toString() {
         return "Student{" +
                 "id=" + id +

@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 @Service
@@ -47,9 +48,21 @@ public class StudentService {
     }
 
     public void registerNewStudent(Student student) {
-
+        Optional<Student> optionalStudent = schoolRepository.findStudentByEmail(
+                Objects.requireNonNull(student).getEmail()
+        );
+        if (optionalStudent.isPresent())
+            throw new IllegalStateException("Email already taken!");
+        else
+            schoolRepository.save(student);
     }
 
     public void removeStudent(long studentId) {
+        boolean isPresent = schoolRepository.existsById(studentId);
+
+        if (isPresent)
+            schoolRepository.deleteById(studentId);
+        else
+            throw new IllegalStateException("Student with id " + studentId + "does not exist");
     }
 }
