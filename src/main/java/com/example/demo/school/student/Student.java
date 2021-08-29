@@ -78,7 +78,7 @@ public class Student {
     @Override
     public int hashCode() {
         /*
-            31 equals to a shift and subtraction for better performance
+            31 equals to a shift and subtraction, for better performance
             on some architectures: 31 * i = (i << 5) - i
          */
         return 31 * Long.hashCode(id) + email.hashCode();

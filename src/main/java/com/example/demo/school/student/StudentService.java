@@ -49,9 +49,8 @@ public class StudentService {
     }
 
     public void registerNewStudent(Student student) {
-        Optional<Student> optionalStudent = schoolRepository.findStudentByEmail(
-                Objects.requireNonNull(student).getEmail()
-        );
+        Optional<Student> optionalStudent = schoolRepository
+                .findStudentByEmail(Objects.requireNonNull(student).getEmail());
         if (optionalStudent.isPresent())
             throw new IllegalStateException("Email already taken!");
         else
