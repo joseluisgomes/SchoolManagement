@@ -30,17 +30,8 @@ public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
-                .csrf().disable() // TODO: After testing the API -> delete this line
                 .authorizeRequests()
                 .antMatchers("/", "index", "/css/*", "/js/*").permitAll()
-        /*      .antMatchers(HttpMethod.DELETE, "/api/v1/**").hasAuthority(COURSE_WRITE.getPermission())
-                .antMatchers(HttpMethod.POST, "/api/v1/**").hasAuthority(COURSE_WRITE.getPermission())
-                .antMatchers(HttpMethod.PUT, "/api/v1/**").hasAuthority(COURSE_WRITE.getPermission())
-                .antMatchers(HttpMethod.GET, "/api/v1/**").hasAnyRole(
-                        STUDENT.name(),
-                        ADMIN.name(),
-                        ADMIN_TRAINEE.name()
-                ) */
                 .anyRequest()
                 .authenticated()
                 .and()
