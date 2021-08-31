@@ -33,11 +33,14 @@ public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
                 .csrf().disable() // TODO: After testing the API -> delete this line
                 .authorizeRequests()
                 .antMatchers("/", "index", "/css/*", "/js/*").permitAll()
-                .antMatchers("/api/**").hasAnyRole(STUDENT.name(), ADMIN.name(), ADMIN_TRAINEE.name())
-                    .antMatchers(HttpMethod.DELETE, "/v1/**").hasAuthority(COURSE_WRITE.name())
-                    .antMatchers(HttpMethod.POST, "/v1/**").hasAuthority(COURSE_WRITE.name())
-                    .antMatchers(HttpMethod.PUT, "/v1/**").hasAuthority(COURSE_WRITE.name())
-                    .antMatchers(HttpMethod.GET, "/v1/**").hasAnyRole(ADMIN.name(), ADMIN_TRAINEE.name())
+                .antMatchers(HttpMethod.DELETE, "/api/v1/**").hasAuthority(COURSE_WRITE.getPermission())
+                .antMatchers(HttpMethod.POST, "/api/v1/**").hasAuthority(COURSE_WRITE.getPermission())
+                .antMatchers(HttpMethod.PUT, "/api/v1/**").hasAuthority(COURSE_WRITE.getPermission())
+                .antMatchers(HttpMethod.GET, "/api/v1/**").hasAnyRole(
+                        STUDENT.name(),
+                        ADMIN.name(),
+                        ADMIN_TRAINEE.name()
+                )
                 .anyRequest()
                 .authenticated()
                 .and()
