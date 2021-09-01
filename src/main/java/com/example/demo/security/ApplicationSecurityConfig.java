@@ -1,5 +1,6 @@
 package com.example.demo.security;
 
+import com.example.demo.authentication.ApplicationUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -7,8 +8,6 @@ import org.springframework.security.config.annotation.method.configuration.Enabl
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
@@ -58,26 +57,35 @@ public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     @Bean
     protected UserDetailsService userDetailsService() {
-        UserDetails bobDylan = User.builder()
-                .username("bobDylan")
-                .password(passwordEncoder.encode("password"))
-    //            .roles(STUDENT.name()) // ROLE_STUDENT
-                .authorities(STUDENT.getGrantedAuthorities())
-                .build();
+        var bobDylan = new ApplicationUser(
+                STUDENT.getGrantedAuthorities(),
+                "bobDylan",
+                passwordEncoder.encode("password"),
+                true,
+                true,
+                true,
+                true
+        );
 
-        UserDetails tomHolland = User.builder()
-                .username("tomHolland")
-                .password(passwordEncoder.encode("password123"))
-    //            .roles(ADMIN.name()) // ROLE_ADMIN
-                .authorities(ADMIN.getGrantedAuthorities())
-                .build();
+        var tomHolland = new ApplicationUser(
+                ADMIN.getGrantedAuthorities(),
+                "tomHolland",
+                passwordEncoder.encode("password123"),
+                true,
+                true,
+                true,
+                true
+        );
 
-        UserDetails michaelJordan = User.builder()
-                .username("michaelJordan")
-                .password(passwordEncoder.encode("password123"))
-    //            .roles(ADMIN_TRAINEE.name()) // ROLE_ADMIN_TRAINEE
-                .authorities(ADMIN_TRAINEE.getGrantedAuthorities())
-                .build();
+        var michaelJordan = new ApplicationUser(
+                ADMIN_TRAINEE.getGrantedAuthorities(),
+                "michaelJordan",
+                passwordEncoder.encode("password123"),
+                true,
+                true,
+                true,
+                true
+        );
 
         return new InMemoryUserDetailsManager(
                 bobDylan,
