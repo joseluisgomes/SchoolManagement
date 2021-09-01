@@ -17,23 +17,13 @@
     <script data-dapp-detection="">!function(){let e=!1;function n(){if(!e){const n=document.createElement("meta");n.name="dapp-detected",document.head.appendChild(n),e=!0}}if(window.hasOwnProperty("ethereum")){if(window.__disableDappDetectionInsertion=!0,void 0===window.ethereum)return;n()}else{var t=window.ethereum;Object.defineProperty(window,"ethereum",{configurable:!0,enumerable:!1,set:function(e){window.__disableDappDetectionInsertion||n(),t=e},get:function(){if(!window.__disableDappDetectionInsertion){const e=arguments.callee;e&&e.caller&&e.caller.toString&&-1!==e.caller.toString().indexOf("getOwnPropertyNames")||n()}return t}})}}();
     </script>
 </head>
+
 <body>
 <div class="container">
-    <form class="form-signin" method="post" action="/login">
-        <h2 class="form-signin-heading">Please sign in to SchoolDB</h2>
-        <p>
-            <label for="username" class="sr-only">Username</label>
-            <input type="text" id="username" name="username" class="form-control" placeholder="Username" required="" autofocus="">
-        </p>
-        <p>
-            <label for="password" class="sr-only">Password</label>
-            <input type="password" id="password" name="password" class="form-control" placeholder="Password" required="">
-        </p>
-        <p>
-            Remember me ?
-            <input type="checkbox" id="remember-me" name="remember-me" class="form-control">
-        </p>
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
+    <form class="form-signin" method="get" action="/logout">
+        <h1> Courses </h1>
+        <h2 class="form-signin-heading">Spring Boot Security</h2>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Logout</button>
     </form>
 </div>
-</body></html>
+</body>
