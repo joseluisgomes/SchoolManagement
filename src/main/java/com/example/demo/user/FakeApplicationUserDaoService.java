@@ -1,4 +1,4 @@
-package com.example.demo.authentication;
+package com.example.demo.user;
 
 import com.google.common.collect.Lists;
 import org.springframework.beans.factory.annotation.Autowired;

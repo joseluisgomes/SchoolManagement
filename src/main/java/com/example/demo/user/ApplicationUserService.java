@@ -1,4 +1,4 @@
-package com.example.demo.authentication;
+package com.example.demo.user;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
