@@ -1,8 +1,10 @@
 package com.example.demo.school;
 
 import com.example.demo.school.student.Student;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 
 import java.time.LocalDate;
 import java.time.Month;
@@ -10,10 +12,16 @@ import java.util.Optional;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
+@DataJpaTest
 class SchoolRepositoryTest {
 
     @Autowired
     private SchoolRepository underTest;
+
+    @AfterEach
+    void tearDown() {
+        underTest.deleteAll();
+    }
 
     @Test
     void findStudentByEmail() {
