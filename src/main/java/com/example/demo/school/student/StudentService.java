@@ -63,6 +63,6 @@ public class StudentService {
         if (isPresent)
             schoolRepository.deleteById(studentId);
         else
-            throw new IllegalStateException("Student with id " + studentId + "does not exist");
+            throw new IllegalStateException("Student with id " + studentId + " does not exist");
     }
 }

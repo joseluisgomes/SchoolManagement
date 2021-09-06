@@ -15,7 +15,9 @@ import java.util.Optional;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.BDDMockito.given;
+import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.verify;
 
 class StudentServiceTest {
@@ -37,6 +39,7 @@ class StudentServiceTest {
     }
 
     @Test
+    @Disabled
     void getStudents() {
         // when
         underTest.getStudents();
@@ -47,6 +50,8 @@ class StudentServiceTest {
     @Test
     @Disabled
     void getStudent() {
+
+
     }
 
     @Test
@@ -85,16 +90,26 @@ class StudentServiceTest {
         );
 
         // when
-        given(schoolRepository.findStudentByEmail(student.getEmail())).willReturn(Optional.of(student));
-
         // then
+        given(schoolRepository.findStudentByEmail(student.getEmail()))
+                .willReturn(Optional.of(student));
+
         assertThatThrownBy(() -> underTest.registerNewStudent(student))
                 .isInstanceOf(IllegalStateException.class)
                 .hasMessageContaining("Email already taken!");
+
+        verify(schoolRepository, never()).save(any());
     }
 
     @Test
     @Disabled
     void removeStudent() {
+        // given
+        var student = new Student(
+                "Bob Dickson",
+                "bob@gmail.com",
+                LocalDate.of(1954, Month.AUGUST, 26)
+        );
+        
     }
 }
