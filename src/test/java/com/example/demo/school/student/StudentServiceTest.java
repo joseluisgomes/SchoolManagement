@@ -50,8 +50,6 @@ class StudentServiceTest {
     @Test
     @Disabled
     void getStudent() {
-
-
     }
 
     @Test
@@ -104,12 +102,6 @@ class StudentServiceTest {
     @Test
     @Disabled
     void removeStudent() {
-        // given
-        var student = new Student(
-                "Bob Dickson",
-                "bob@gmail.com",
-                LocalDate.of(1954, Month.AUGUST, 26)
-        );
-        
+
     }
 }
