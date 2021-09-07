@@ -10,7 +10,7 @@ The core, the yolk of this app is security. I thought it would be more interesti
 <br />As the name refers this app represents, illustrates a school's management system, whose members can be filtered or splited in 3 categories : **STUDENT**, **ADMIN** and **ADMIN_TRAINEE**.
 <br />
 <br />The **ADMIN** category is equivalent to a school's director and the **ADMIN_TRAINEE** represents a student who performs functions related to an administration of a school.
-<br />Which category owns his rights, authorizations or permissions associated. For the **STUDENT** category, I did not assign it any 
+<br />Which category owns his rights, authorizations or permissions associated. For the **STUDENT** category, I did not assign any 
 permissions.
 <br />
 <br /> The logic of the this app is as follows:
